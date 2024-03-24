@@ -19,15 +19,29 @@ class ExponentialBackoff:
     then choosing a random number of slots between 0 and the maximum
     number of slots.
 
+    (See https://en.wikipedia.org/wiki/Exponential_backoff#Collision_avoidance)
+
+    Example:
+
+        import exponentional_backoff_ca
+
+        time_slot_secs = 2.0 # The number of seconds in each time slot.
+        num_iterations = 10  # The number of iterations.
+
+        exp_boff = ExponentialBackoff(time_slot_secs, num_iterations)
+
+        for interval in exp_boff:
+            print(f"number of seconds in this slot is {interval}")
+
     """
     def __init__(
             self,
             slot_time:            float,
             number_of_iterations: int,
-            max_slots:            Optional[int] = None,
+            max_slots:            Optional[int]   = None,
             limit_value:          Optional[float] = None,
             multiplier:           float = 2.0,
-            debug:                bool = False,
+            debug:                bool  = False,
     ):
         """
             slot_time: how long each slot should be (in seconds)
@@ -80,7 +94,7 @@ class ExponentialBackoff:
 
             self.progress(f"counter is: {self.counter}")
 
-            # Calculate how many slot-times. This will be
+            # Calculate how many slots. This will be
             # a random integer in [0, (self.multiplier)**(self.counter) - 1].
             max_slots = int(self.multiplier**(self.counter) - 1)
             if ((self.max_slots is not None) and (max_slots > self.max_slots)):
