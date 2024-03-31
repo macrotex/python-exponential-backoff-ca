@@ -3,7 +3,7 @@ requires = ["setuptools >= 68.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "exponential-backoff-ca"
+name = "exponential_backoff_ca"
 version = "1"
 description = "exponential backoff iterator with collision avoidance"
 readme = "README.md"
