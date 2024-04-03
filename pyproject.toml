@@ -4,10 +4,17 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "exponential_backoff_ca"
-version = "1"
-description = "exponential backoff iterator with collision avoidance"
+version = "2"
+description = "An exponential backoff iterator with collision avoidance."
 readme = "README.md"
 requires-python = ">= 3.9"
+authors = [
+  {name = "IEDO Team"},
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+]
 
 [tool.setuptools.packages.find]
 include = ["exponential_backoff*"]
