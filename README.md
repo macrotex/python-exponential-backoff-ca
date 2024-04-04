@@ -13,17 +13,17 @@ available time slots increases.
 For example, define the time slot size to be two seconds. In the first
 iteration the number of available slots is one. The number N of slots is
 chosen randomly in the integer interval [0, 1], that is, either zero or
-one. The wait time returned is two seconds multiplied N.
+one. The wait time returned is two seconds multiplied by N.
 
 In the second iteration the number of available slots is two. The number N
 of slots is chosen randomly in the integer interval [0, 2], that is,
 either zero, one, or two. The wait time returned is two seconds multiplied
-N.
+by N.
 
 In the third iteration the number of available slots is four. The number N
 of slots is chosen randomly in the integer interval [0, 4], that is,
 either zero, one, two, three, or four. The wait time returned is two
-seconds multiplied N.
+seconds multiplied by N.
 
 And so on.
 
@@ -42,7 +42,7 @@ exp_boff = ExponentialBackoff(time_slot_secs, num_iterations)
 for interval in exp_boff:
     print(f"wait seconds is {interval}")
 ```
-will output (something like)
+Will output (something like)
 ```
 wait seconds is 2.0
 wait seconds is 6.0
@@ -68,7 +68,7 @@ exp_boff = ExponentialBackoff(time_slot_secs, num_iterations)
 for interval in exp_boff:
     print(f"number of times going through loop: {exp_boff.counter}")
 ```
-will output
+Will output
 ```
 number of times going through loop: 1
 number of times going through loop: 2
@@ -91,7 +91,7 @@ exp_boff = ExponentialBackoff(time_slot_secs, num_iterations, max_slots=max_slot
 for interval in exp_boff:
     print(f"wait seconds is {interval}")
 ```
-will output (something like)
+Will output (something like)
 ```
 wait seconds is 2.0
 wait seconds is 2.0
@@ -105,7 +105,7 @@ wait seconds is 0.0
 wait seconds is 4.0
 ```
 
-You can also limit the returned value by passing in the `limit_value` parameter.
+You can also limit the wait time returned by passing in the `limit_value` parameter.
 ```
 from exponential_backoff_ca import ExponentialBackoff
 
@@ -135,7 +135,7 @@ wait seconds is 13.0
 The exponential backoff object doubles the number of slots each time.
 However, there may be circumstances where that doubling is too much (or
 too little). You can adjust how fast the number of available slots
-increases using the `multiplier` parameter. Note that the passing in a
+increases using the `multiplier` parameter. Passing in a
 `multiplier` value less than 1.0 will raise an exception.
 ```
 from exponential_backoff_ca import ExponentialBackoff
@@ -149,7 +149,7 @@ exp_boff = ExponentialBackoff(time_slot_secs, num_iterations, multiplier=multipl
 for interval in exp_boff:
     print(f"wait seconds is {interval}")
 ```
-will output something like
+Will output something like
 ```
 wait seconds is 0.0
 wait seconds is 2.0
