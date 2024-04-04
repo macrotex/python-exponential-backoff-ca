@@ -94,17 +94,17 @@ class ExponentialBackoff:
 
             self.progress(f"counter is: {self.counter}")
 
-            # Calculate how many slots. This will be
+            # Calculate how many available slots. This will be
             # a random integer in [0, (self.multiplier)**(self.counter) - 1].
-            max_slots = int(self.multiplier**(self.counter) - 1)
-            if ((self.max_slots is not None) and (max_slots > self.max_slots)):
+            available_slots = int(self.multiplier**(self.counter) - 1)
+            if ((self.max_slots is not None) and (available_slots > self.max_slots)):
                 self.progress(f"max slots limit of {self.max_slots} reached")
-                max_slots = self.max_slots
+                available_slots = self.max_slots
 
-            msg = f"will choose number of slots randomly from [0, {max_slots}]"
+            msg = f"will choose number of slots randomly from [0, {available_slots}]"
             self.progress(msg)
 
-            number_slots = random.randint(0, max_slots)
+            number_slots = random.randint(0, available_slots)
             self.progress(f"number of slots chosen: {number_slots}")
 
             wait_time = number_slots * self.slot_time
