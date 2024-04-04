@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "exponential_backoff_ca"
-version = "2.1"
+version = "2.2"
 description = "An exponential backoff iterator with collision avoidance."
 readme = "README.md"
 requires-python = ">= 3.9"

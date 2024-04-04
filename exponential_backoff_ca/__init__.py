@@ -8,7 +8,7 @@ import datetime
 import random
 
 ## TYPING
-from typing import Optional
+from typing import Optional, Iterator
 ## END OF TYPING
 
 class ExponentialBackoff:
@@ -82,11 +82,11 @@ class ExponentialBackoff:
         if (self.debug):
             print(f"[progress]: {msg}")
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[float]:
         """The iterator initiator"""
         return self
 
-    def __next__(self):
+    def __next__(self) -> float:
         """What to do on the next iteration
         """
         if self.counter < self.number_of_iterations:
