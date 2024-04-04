@@ -11,19 +11,14 @@ of time represented by these time slots. In each iteration the number of
 available time slots increases.
 
 For example, define the time slot size to be two seconds. In the first
-iteration the number of available slots is one. The number N of slots is
-chosen randomly in the integer interval [0, 1], that is, either zero or
-one. The wait time returned is two seconds multiplied by N.
+iteration the number of available slots is `2**1-1=1`. The number N of
+slots is chosen randomly in the integer interval [0, 1], that is, either
+zero or one. The wait time returned is two seconds multiplied by N.
 
-In the second iteration the number of available slots is two. The number N
-of slots is chosen randomly in the integer interval [0, 2], that is,
-either zero, one, or two. The wait time returned is two seconds multiplied
-by N.
-
-In the third iteration the number of available slots is four. The number N
-of slots is chosen randomly in the integer interval [0, 4], that is,
-either zero, one, two, three, or four. The wait time returned is two
-seconds multiplied by N.
+In the second iteration the number of available slots is `2**2-1=3`. The
+number N of slots is chosen randomly in the integer interval [0, 3], that
+is, either zero, one, two, or three. The wait time returned is two seconds
+multiplied by N.
 
 And so on.
 
@@ -162,3 +157,6 @@ wait seconds is 38.0
 wait seconds is 30.0
 wait seconds is 22.0
 ```
+
+To see what the iterator is doing, pass in the `debug` parameter set to
+`True`.
