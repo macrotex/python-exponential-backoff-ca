@@ -117,3 +117,8 @@ class ExponentialBackoff:
             return wait_time
 
         raise StopIteration
+
+    def reset(self) -> None:
+        """Rest counter to zero."""
+        self.counter = 0
+        return

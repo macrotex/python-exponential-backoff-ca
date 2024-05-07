@@ -72,6 +72,38 @@ number of times going through loop: 4
 number of times going through loop: 5
 ```
 
+To reuse the iterator you need to reset the counter back to zero. You do this 
+via the `reset()` method:
+
+```
+from exponential_backoff_ca import ExponentialBackoff
+
+time_slot_secs = 2.0
+num_iterations = 5
+
+exp_boff = ExponentialBackoff(time_slot_secs, num_iterations)
+
+for interval in exp_boff:
+    print(f"number of times going through loop: {exp_boff.counter}")
+
+exp.boff.reset()
+for interval in exp_boff:
+    print(f"number of times going through loop (take two): {exp_boff.counter}")
+```
+Will output
+```
+number of times going through loop: 1
+number of times going through loop: 2
+number of times going through loop: 3
+number of times going through loop: 4
+number of times going through loop: 5
+number of times going through loop (take two): 1
+number of times going through loop (take two): 2
+number of times going through loop (take two): 3
+number of times going through loop (take two): 4
+number of times going through loop (take two): 5
+```
+
 To limit the maxiumum number of available slots use the optional `max_slots` parameter:
 
 ```
